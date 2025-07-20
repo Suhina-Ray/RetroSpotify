@@ -373,10 +373,10 @@
         <table class="nav-table">
             <tr>
                 <td class="nav-cell" data-nav="home">🎼 HOME 🎼</td>
-                <td class="nav-cell" data-nav="browse">💿 BROWSE CDs 💿</td>
-                <td class="nav-cell" data-nav="playlists">🎧 MY PLAYLISTS 🎧</td>
-                <td class="nav-cell" data-nav="radio">📻 RADIO 📻</td>
-                <td class="nav-cell" data-nav="downloads">💾 DOWNLOADS 💾</td>
+                <a href="browse.html" class="browse">💿 BROWSE CDs 💿</td>
+                <a href="playlist.html" class="button-3d">🎧 VIEW PLAYLIST</a>
+                <a href="radio.html" class="radio">📻 RADIO 📻</td>
+                <a href="downloads.html" class="downloads">💾 DOWNLOADS 💾</td>
             </tr>
         </table>
         
@@ -582,7 +582,45 @@
         <div class="playlist-item" onclick="browseCD('Radiohead - OK Computer')">💿 Radiohead - OK Computer ($13.99)</div>
         <div class="playlist-item" onclick="browseCD('Alanis - Jagged Little Pill')">💿 Alanis - Jagged Little Pill ($10.99)</div>
     </div>
-
+    <div id="popup" style="
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #ff00ff;
+    color: yellow;
+    font-family: 'Courier New', monospace;
+    font-size: 20px;
+    border: 5px dashed cyan;
+    padding: 25px;
+    z-index: 9999;
+    box-shadow: 0 0 30px #0ff;
+    animation: popFade 0.4s ease-out;
+  ">
+    <div style="text-align: center;">
+      💥 <strong>BOOM!</strong> 💥<br>
+      📢 <em>The Beatles are dropping NEW MUSIC this Friday!</em> 🎶
+    </div>
+    <button onclick="document.getElementById('popup').style.display='none';" style="
+      margin-top: 15px;
+      background: black;
+      color: lime;
+      border: 2px solid lime;
+      padding: 5px 10px;
+      cursor: pointer;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    ">CLOSE</button>
+  </div>
+  
+  <style>
+    @keyframes popFade {
+      from { opacity: 0; transform: scale(0.8) translateX(-50%); }
+      to { opacity: 1; transform: scale(1) translateX(-50%); }
+    }
+  </style>
+  
             <script>
 // Global state
 let isPlaying = false;
@@ -648,4 +686,10 @@ function browseCD(albumName) {
 
 // Initialize
 updateDisplay();
+
+  window.onload = function () {
+    setTimeout(() => {
+      alert("📢 The Beatles are releasing NEW MUSIC this Friday! Get ready to groove!");
+    }, 800); // delay for cool effect
+  };
 </script>
